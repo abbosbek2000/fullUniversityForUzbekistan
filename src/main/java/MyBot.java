@@ -24,6 +24,8 @@ public class MyBot extends TelegramLongPollingBot {
         return "5829081396:AAHz8gJi23dV2lGVAqcYH0qsRXhfPXj9UQo";
     }
 
+
+    ///
     @Override
     public void onUpdateReceived(Update update) {
         if (update.hasMessage()) {

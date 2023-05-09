@@ -7,12 +7,21 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import service.UniversityService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.UUID;
 
 public class MyBot extends TelegramLongPollingBot {
+
+    UniversityService universityService = new
+            UniversityService();
+
+    public MyBot() throws SQLException {
+    }
 
     @Override
     public String getBotUsername() {
@@ -54,6 +63,21 @@ public class MyBot extends TelegramLongPollingBot {
                     try {
                         execute(sendMessage);
                     } catch (TelegramApiException e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    String responseFromClient = message.getText();
+                    String[] universityData = responseFromClient.split(" ");
+                    String name = universityData[0];
+                    String phoneNumber = universityData[1];
+                    try {
+                        String id = UUID.randomUUID().toString();
+                        boolean isInsert = universityService.addUniversity(name, phoneNumber);
+
+                        System.out.println(isInsert);
+
+                    } catch (SQLException e) {
                         e.printStackTrace();
                     }
                 }

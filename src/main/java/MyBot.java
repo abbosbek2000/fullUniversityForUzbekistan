@@ -23,6 +23,7 @@ public class MyBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return "5829081396:AAHz8gJi23dV2lGVAqcYH0qsRXhfPXj9UQo";
     }
+    // 26 qatorda o'zgarish boldi
 
 
     ///

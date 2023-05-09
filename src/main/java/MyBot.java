@@ -18,7 +18,7 @@ public class MyBot extends TelegramLongPollingBot {
 
     public MyBot() throws SQLException {
     }
-
+//
     @Override
     public String getBotUsername() {
         return "SpringAcademyBot";
